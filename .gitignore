@@ -11,12 +11,14 @@ node_modules
 /coverage
 
 # production
-/es
-/lib
-/umd
+# /es
+# /lib
+# /umd
 
 # misc
 .DS_Store
 .idea/
 
 npm-debug.log*
+
+.history
