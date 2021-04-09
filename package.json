@@ -41,6 +41,7 @@
     "lint": "eslint src"
   },
   "dependencies": {
+    "@coreui/icons": "^2.0.1",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2"
   },

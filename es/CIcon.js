@@ -4,8 +4,8 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 import React, { useMemo, useState } from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames"; // import './CIcon.css'
-
+import classNames from "classnames";
+import * as CoreuiIcons from "@coreui/icons/js";
 var warned = {};
 
 var colog = function colog(msg, icon) {
@@ -48,8 +48,12 @@ var CIcon = function CIcon(props) {
   var code = useMemo(function () {
     if (content) {
       return content;
-    } else if (name && React.icons) {
-      return React.icons[iconName] ? React.icons[iconName] : colog("CIcon component: icon name '" + iconName + "' does not exist in React.icons object. " + "To use icons by 'name' prop you need to make them available globally " + "by adding them to React.icons object. CIcon component docs: https://coreui.io/react/docs/components/CIcon \n", iconName);
+    } else if (name) {
+      if (React.icons) {
+        return React.icons[iconName] ? React.icons[iconName] : colog("CIcon component: icon name '" + iconName + "' does not exist in React.icons object. " + "To use icons by 'name' prop you need to make them available globally " + "by adding them to React.icons object. CIcon component docs: https://coreui.io/react/docs/components/CIcon \n", iconName);
+      } else if (CoreuiIcons) {
+        return CoreuiIcons[iconName] ? CoreuiIcons[iconName] : colog("CIcon component: icon name '" + iconName + "' does not exist in React.icons object. " + "To use icons by 'name' prop you need to make them available globally " + "by adding them to React.icons object. CIcon component docs: https://coreui.io/react/docs/components/CIcon \n", iconName);
+      }
     }
   }, [change]);
   var iconCode = useMemo(function () {
